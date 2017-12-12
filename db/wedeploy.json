@@ -1,0 +1,12 @@
+{
+  "id": "db",
+  "image": "healthcheck/mysql",
+  "volume": "/var/lib/mysql",
+  "zeroDowntime": false,
+  "env": {
+    "MYSQL_ROOT_PASSWORD": "C2hVmcZwdk",
+    "MYSQL_PASSWORD": "mydemo",
+    "MYSQL_DATABASE": "mydemo",
+    "MYSQL_USER": "mydemo"
+  }
+}

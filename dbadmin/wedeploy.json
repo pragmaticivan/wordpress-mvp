@@ -1,0 +1,12 @@
+{
+  "id": "dbadmin",
+  "image": "phpmyadmin/phpmyadmin",
+  "dependencies": ["db"],
+  "port": 80,
+	"env": {
+    "PMA_HOST": "db",
+    "PMA_USER": "root",
+    "PMA_PASSWORD": "C2hVmcZwdk",
+    "PMA_ABSOLUTE_URI": "https://dbadmin-doskofoto.wedeploy.io"
+  }
+}

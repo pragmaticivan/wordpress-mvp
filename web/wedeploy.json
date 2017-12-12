@@ -1,0 +1,12 @@
+{
+  "id": "web",
+  "volume": "/var/www/html/wp-content/uploads",
+  "dependencies": ["db"],
+  "env": {
+    "WORDPRESS_DB_PASSWORD": "mydemo",
+    "WORDPRESS_TABLE_PREFIX": "wp_",
+    "WORDPRESS_DB_NAME": "mydemo",
+    "WORDPRESS_DB_USER": "mydemo",
+    "WORDPRESS_DB_HOST": "db"
+  }
+}

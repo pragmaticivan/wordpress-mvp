@@ -1,0 +1,51 @@
+version: '3'
+networks:
+  sandboxwordpress:
+services:
+  wordpress:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - 8040:80
+    networks:
+      - sandboxwordpress
+    volumes:
+      - ./web:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: mydemo
+      WORDPRESS_DB_PASSWORD: mydemo
+      WORDPRESS_DB_NAME: mydemo
+      WORDPRESS_TABLE_PREFIX: wp_
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels: [APP=WORDPRESS]
+      restart_policy:
+        condition: always
+  db:
+    image: mysql
+    ports:
+      - 3303:3306
+    volumes:
+     - /var/lib/mysql
+    networks:
+      - sandboxwordpress
+    environment:
+      MYSQL_ROOT_PASSWORD: C2hVmcZwdk
+      MYSQL_DATABASE: mydemo
+      MYSQL_USER: mydemo
+      MYSQL_PASSWORD: mydemo
+
+  dbadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8735:80
+    networks:
+      - sandboxwordpress
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: C2hVmcZwdk
+
